@@ -3,12 +3,27 @@ package de.codecrafters.utils.listenersupport;
 import java.util.concurrent.Executor;
 
 /**
- * Created by Ingo on 12.11.2016.
+ * A ListenerSupport factory that supports listeners with methods up to three arguments.
+ *
+ * @author ISchwarz
  */
 public class ListenerSupport {
 
     private ListenerSupport() {
         //no instance
+    }
+
+    public static <L> ListenerSupport0<L> createFor(
+            final ListenerSupport0.ListenerNotifier<L> notifier) {
+
+        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
+    }
+
+    public static <L> ListenerSupport0<L> createFor(
+            final ListenerSupport0.ListenerNotifier<L> notifier,
+            final Executor executor) {
+
+        return new ListenerSupport0<>(notifier, executor);
     }
 
     public static <L, D> ListenerSupport1<L, D> createFor(
