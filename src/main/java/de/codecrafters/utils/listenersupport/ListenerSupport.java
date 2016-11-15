@@ -13,12 +13,29 @@ public class ListenerSupport {
         //no instance
     }
 
+    /**
+     * Creates a ListenerSupport for a callback method without arguments. The notification will be done in the
+     * thread from which the notifyListeners() method is done.
+     *
+     * @param notifier The {@link ListenerSupport0.ListenerNotifier} that shall be used to notify the listener.
+     * @param <L>      The type of the listener that shall be notified.
+     * @return The created {@link ListenerSupport0}.
+     */
     public static <L> ListenerSupport0<L> createFor(
             final ListenerSupport0.ListenerNotifier<L> notifier) {
 
         return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
     }
 
+    /**
+     * Creates a ListenerSupport for a callback method without arguments. The notification will be done using the
+     * given {@link Executor}.
+     *
+     * @param notifier The {@link ListenerSupport0.ListenerNotifier} that shall be used to notify the listener.
+     * @param executor The {@link Executor} that will be used to notify the listeners.
+     * @param <L>      The type of the listener that shall be notified.
+     * @return The created {@link ListenerSupport0}.
+     */
     public static <L> ListenerSupport0<L> createFor(
             final ListenerSupport0.ListenerNotifier<L> notifier,
             final Executor executor) {
@@ -26,12 +43,31 @@ public class ListenerSupport {
         return new ListenerSupport0<>(notifier, executor);
     }
 
+    /**
+     * Creates a ListenerSupport for a callback method with one argument. The notification will be done in the
+     * thread from which the notifyListeners() method is done.
+     *
+     * @param notifier The {@link ListenerSupport1.ListenerNotifier} that shall be used to notify the listener.
+     * @param <L>      The type of the listener that shall be notified.
+     * @param <D>      The type of the argument that will be passed to the listener on notify.
+     * @return The created {@link ListenerSupport1}.
+     */
     public static <L, D> ListenerSupport1<L, D> createFor(
             final ListenerSupport1.ListenerNotifier<L, D> notifier) {
 
         return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
     }
 
+    /**
+     * Creates a ListenerSupport for a callback method with one argument. The notification will be done using the
+     * given {@link Executor}.
+     *
+     * @param notifier The {@link ListenerSupport1.ListenerNotifier} that shall be used to notify the listener.
+     * @param executor The {@link Executor} that will be used to notify the listeners.
+     * @param <L>      The type of the listener that shall be notified.
+     * @param <D>      The type of the argument that will be passed to the listener on notify.
+     * @return The created {@link ListenerSupport1}.
+     */
     public static <L, D> ListenerSupport1<L, D> createFor(
             final ListenerSupport1.ListenerNotifier<L, D> notifier,
             final Executor executor) {
@@ -39,12 +75,33 @@ public class ListenerSupport {
         return new ListenerSupport1<>(notifier, executor);
     }
 
+    /**
+     * Creates a ListenerSupport for a callback method with two arguments. The notification will be done in the
+     * thread from which the notifyListeners() method is done.
+     *
+     * @param notifier The {@link ListenerSupport2.ListenerNotifier} that shall be used to notify the listener.
+     * @param <L>      The type of the listener that shall be notified.
+     * @param <D1>     The type of the first argument that will be passed to the listener on notify.
+     * @param <D2>     The type of the second argument that will be passed to the listener on notify.
+     * @return The created {@link ListenerSupport2}.
+     */
     public static <L, D1, D2> ListenerSupport2<L, D1, D2> createFor(
             final ListenerSupport2.ListenerNotifier<L, D1, D2> notifier) {
 
         return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
     }
 
+    /**
+     * Creates a ListenerSupport for a callback method with two arguments. The notification will be done using the
+     * given {@link Executor}.
+     *
+     * @param notifier The {@link ListenerSupport2.ListenerNotifier} that shall be used to notify the listener.
+     * @param executor The {@link Executor} that will be used to notify the listeners.
+     * @param <L>      The type of the listener that shall be notified.
+     * @param <D1>     The type of the first argument that will be passed to the listener on notify.
+     * @param <D2>     The type of the second argument that will be passed to the listener on notify.
+     * @return The created {@link ListenerSupport2}.
+     */
     public static <L, D1, D2> ListenerSupport2<L, D1, D2> createFor(
             final ListenerSupport2.ListenerNotifier<L, D1, D2> notifier,
             final Executor executor) {
@@ -52,12 +109,35 @@ public class ListenerSupport {
         return new ListenerSupport2<>(notifier, executor);
     }
 
+    /**
+     * Creates a ListenerSupport for a callback method with three arguments. The notification will be done in the
+     * thread from which the notifyListeners() method is done.
+     *
+     * @param notifier The {@link ListenerSupport3.ListenerNotifier} that shall be used to notify the listener.
+     * @param <L>      The type of the listener that shall be notified.
+     * @param <D1>     The type of the first argument that will be passed to the listener on notify.
+     * @param <D2>     The type of the second argument that will be passed to the listener on notify.
+     * @param <D3>     The type of the third argument that will be passed to the listener on notify.
+     * @return The created {@link ListenerSupport3}.
+     */
     public static <L, D1, D2, D3> ListenerSupport3<L, D1, D2, D3> createFor(
             final ListenerSupport3.ListenerNotifier<L, D1, D2, D3> notifier) {
 
         return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
     }
 
+    /**
+     * Creates a ListenerSupport for a callback method with three arguments. The notification will be done using the
+     * given {@link Executor}.
+     *
+     * @param notifier The {@link ListenerSupport3.ListenerNotifier} that shall be used to notify the listener.
+     * @param executor The {@link Executor} that will be used to notify the listeners.
+     * @param <L>      The type of the listener that shall be notified.
+     * @param <D1>     The type of the first argument that will be passed to the listener on notify.
+     * @param <D2>     The type of the second argument that will be passed to the listener on notify.
+     * @param <D3>     The type of the third argument that will be passed to the listener on notify.
+     * @return The created {@link ListenerSupport3}.
+     */
     public static <L, D1, D2, D3> ListenerSupport3<L, D1, D2, D3> createFor(
             final ListenerSupport3.ListenerNotifier<L, D1, D2, D3> notifier,
             final Executor executor) {
