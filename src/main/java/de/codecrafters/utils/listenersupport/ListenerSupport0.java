@@ -6,6 +6,7 @@ import java.util.concurrent.Executor;
 /**
  * Implementation of ListenerSupport for callback method with one argument.
  *
+ * @param <L> The type of the listener that shall be notified.
  * @author ISchwarz
  */
 public class ListenerSupport0<L> extends ListenerSupportBase<L> {
