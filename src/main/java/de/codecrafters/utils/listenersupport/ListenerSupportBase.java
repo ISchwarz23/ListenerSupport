@@ -10,6 +10,7 @@ import java.util.concurrent.Executor;
 /**
  * The base for the ListenerSupport implementations, which is managing the registration and unregistration of listeners.
  *
+ * @param <L> The type of the listener that shall be notified.
  * @author ISchwarz
  */
 abstract class ListenerSupportBase<L> {
@@ -24,7 +25,7 @@ abstract class ListenerSupportBase<L> {
      *
      * @param notifyExecutor The {@link Executor} that shall be used to notify the registered listeners.
      */
-    public ListenerSupportBase(final Executor notifyExecutor) {
+    ListenerSupportBase(final Executor notifyExecutor) {
         this.notifyExecutor = notifyExecutor;
     }
 
@@ -68,15 +69,6 @@ abstract class ListenerSupportBase<L> {
     }
 
     /**
-     * Gives the current {@link FailureStrategy}.
-     *
-     * @return The {@link FailureStrategy} that is currently used.
-     */
-    FailureStrategy<? super L> getFailureStrategy() {
-        return failureStrategy;
-    }
-
-    /**
      * Executes the runnable for listener notification. If a {@link Throwable} is thrown by the listener,
      * it is forwarded to the {@link FailureStrategy}.
      *
@@ -91,9 +83,18 @@ abstract class ListenerSupportBase<L> {
                 try {
                     getFailureStrategy().onFailure(listener, t);
                 } catch (Throwable t2) {
-                    // do nothing
+                    // ignore errors in FailureStrategy
                 }
             }
         });
+    }
+
+    /**
+     * Gives the current {@link FailureStrategy}.
+     *
+     * @return The {@link FailureStrategy} that is currently used.
+     */
+    private FailureStrategy<? super L> getFailureStrategy() {
+        return failureStrategy;
     }
 }
