@@ -30,16 +30,6 @@ public class ListenerSupport1<L, D> extends ListenerSupportBase<L> {
     private final ListenerNotifier<L, D> notifier;
 
     /**
-     * Creates a new ListenerSupport that uses the given {@link ListenerNotifier}. It will execute the notification in
-     * the current thread.
-     *
-     * @param notifier The {@link ListenerNotifier} that shall be used to notify the listeners.
-     */
-    ListenerSupport1(final ListenerNotifier<L, D> notifier) {
-        this(notifier, NotifyExecutors.createCurrentThreadExecutor());
-    }
-
-    /**
      * Creates a new ListenerSupport that uses the given {@link ListenerNotifier} and the given {@link Executor}.
      *
      * @param notifier       The {@link ListenerNotifier} that shall be used to notify the listeners.

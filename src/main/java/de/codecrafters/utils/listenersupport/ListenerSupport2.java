@@ -13,10 +13,6 @@ public class ListenerSupport2<L, D1, D2> extends ListenerSupportBase<L> {
 
     private final ListenerNotifier<L, D1, D2> notifier;
 
-    ListenerSupport2(final ListenerNotifier<L, D1, D2> notifier) {
-        this(notifier, NotifyExecutors.createCurrentThreadExecutor());
-    }
-
     ListenerSupport2(final ListenerNotifier<L, D1, D2> notifier, final Executor notifyExecutor) {
         super(notifyExecutor);
         this.notifier = notifier;

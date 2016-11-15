@@ -14,7 +14,7 @@ public class ListenerSupport {
     public static <L, D> ListenerSupport1<L, D> createFor(
             final ListenerSupport1.ListenerNotifier<L, D> notifier) {
 
-        return new ListenerSupport1<>(notifier);
+        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
     }
 
     public static <L, D> ListenerSupport1<L, D> createFor(
@@ -27,7 +27,7 @@ public class ListenerSupport {
     public static <L, D1, D2> ListenerSupport2<L, D1, D2> createFor(
             final ListenerSupport2.ListenerNotifier<L, D1, D2> notifier) {
 
-        return new ListenerSupport2<>(notifier);
+        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
     }
 
     public static <L, D1, D2> ListenerSupport2<L, D1, D2> createFor(
@@ -40,7 +40,7 @@ public class ListenerSupport {
     public static <L, D1, D2, D3> ListenerSupport3<L, D1, D2, D3> createFor(
             final ListenerSupport3.ListenerNotifier<L, D1, D2, D3> notifier) {
 
-        return new ListenerSupport3<>(notifier);
+        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
     }
 
     public static <L, D1, D2, D3> ListenerSupport3<L, D1, D2, D3> createFor(
