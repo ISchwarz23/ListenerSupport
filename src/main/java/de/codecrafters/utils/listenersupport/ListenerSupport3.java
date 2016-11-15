@@ -5,7 +5,7 @@ import java.util.concurrent.Executor;
 /**
  * Created by Ingo on 12.11.2016.
  */
-public class ListenerSupport3<L, D1, D2, D3> extends ListenerSupportBase<L> {
+public final class ListenerSupport3<L, D1, D2, D3> extends ListenerSupportBase<L> {
 
     public interface ListenerNotifier<L, D1, D2, D3> {
         void notifyListener(L listener, D1 data1, D2 data2, D3 data3);

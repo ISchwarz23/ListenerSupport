@@ -9,7 +9,7 @@ import java.util.concurrent.Executor;
  * @param <L> The type of the listener that shall be notified.
  * @author ISchwarz
  */
-public class ListenerSupport0<L> extends ListenerSupportBase<L> {
+public final class ListenerSupport0<L> extends ListenerSupportBase<L> {
 
     /**
      * Interface for a listener notifiers with a callback methods with no argument.
