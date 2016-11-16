@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 /**
  * Created by Ingo on 13.11.2016.
  */
-public class JavaLoggingFailureStrategy implements FailureStrategy<Object> {
+class JavaLoggingFailureStrategy implements FailureStrategy<Object> {
 
     @Override
     public void onFailure(Object listener, Throwable t) {

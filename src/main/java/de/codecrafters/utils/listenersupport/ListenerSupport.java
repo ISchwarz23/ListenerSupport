@@ -2,7 +2,7 @@ package de.codecrafters.utils.listenersupport;
 
 import java.util.concurrent.Executor;
 
-import static de.codecrafters.utils.listenersupport.NotifyExecutor.currentThreadExecutor;
+import static de.codecrafters.utils.listenersupport.NotifyExecutors.currentThreadExecutor;
 
 /**
  * A ListenerSupport factory that supports listeners with methods up to three arguments.

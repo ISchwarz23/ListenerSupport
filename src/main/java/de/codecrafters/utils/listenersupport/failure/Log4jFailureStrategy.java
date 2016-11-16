@@ -1,19 +1,24 @@
 package de.codecrafters.utils.listenersupport.failure;
 
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * A {@link FailureStrategy} implementation that will log exceptions using Log4j.
  *
  * @author ISchwarz
  */
-public class Log4jFailureStrategy implements FailureStrategy<Object> {
+class Log4jFailureStrategy implements FailureStrategy<Object> {
+
+    private final Level logLevel;
+
+    Log4jFailureStrategy(final Level logLevel) {
+        this.logLevel = logLevel;
+    }
 
     @Override
-    public void onFailure(Object listener, Throwable t) {
-        final Logger logger = LogManager.getLogger(listener.getClass());
-        logger.error("Exception thrown by Listener", t);
+    public void onFailure(final Object listener, final Throwable t) {
+        LogManager.getLogger(listener.getClass()).log(logLevel, "Exception thrown by Listener", t);
     }
 }

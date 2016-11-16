@@ -9,9 +9,9 @@ import java.util.concurrent.Executors;
  *
  * @author ISchwarz
  */
-public final class NotifyExecutor {
+public final class NotifyExecutors {
 
-    private NotifyExecutor() {
+    private NotifyExecutors() {
         //no instance
     }
 
