@@ -1,8 +1,11 @@
 package de.codecrafters.utils.listenersupport;
 
+import de.codecrafters.utils.listenersupport.failure.FailureStrategy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.concurrent.Executor;
 
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
@@ -80,6 +83,40 @@ public class ListenerSupport1Test {
         verify(listenerMock1).listenerMethod("Hello");
         verify(listenerMock2).listenerMethod("Hello");
         verify(listenerMock3).listenerMethod("Hello");
+    }
+
+    @Test
+    public void shouldUseGivenExecutorForNotification() throws Exception {
+        // given
+        final Executor executorMock = mock(Executor.class);
+        final ListenerSupport1<ListenerWithOneArg, String> cut =
+                ListenerSupport.createFor(ListenerWithOneArg::listenerMethod, executorMock);
+
+        final ListenerWithOneArg listenerMock = mock(ListenerWithOneArg.class);
+        cut.addListener(listenerMock);
+
+        // when
+        cut.notifyListeners("bar");
+
+        // then
+        verify(executorMock).execute(any(Runnable.class));
+    }
+
+    @Test
+    public void shouldUseTheGivenFailureStrategy() throws Exception {
+        // given
+        final FailureStrategy<Object> failureStrategyMock = mock(FailureStrategy.class);
+        cut.setFailureStrategy(failureStrategyMock);
+
+        final ListenerWithOneArg listenerMock = mock(ListenerWithOneArg.class);
+        doThrow(new IllegalArgumentException()).when(listenerMock).listenerMethod(anyString());
+        cut.addListener(listenerMock);
+
+        // when
+        cut.notifyListeners("foo");
+
+        // then
+        verify(failureStrategyMock).onFailure(any(), any());
     }
 
 }
