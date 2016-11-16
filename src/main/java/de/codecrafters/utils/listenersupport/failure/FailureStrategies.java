@@ -11,11 +11,11 @@ public final class FailureStrategies {
         //no instance
     }
 
-    public FailureStrategy<Object> createLog4jFailureStrategy() {
+    public static FailureStrategy<Object> createLog4jLogger() {
         return new Log4jFailureStrategy(Level.ERROR);
     }
 
-    public FailureStrategy<Object> createLog4jFailureStrategy(final Level logLevel) {
+    public static FailureStrategy<Object> createLog4jLogger(final Level logLevel) {
         return new Log4jFailureStrategy(logLevel);
     }
 

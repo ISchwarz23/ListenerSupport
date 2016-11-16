@@ -1,7 +1,7 @@
 package de.codecrafters.utils.listenersupport;
 
+import de.codecrafters.utils.listenersupport.failure.FailureStrategies;
 import de.codecrafters.utils.listenersupport.failure.FailureStrategy;
-import de.codecrafters.utils.listenersupport.failure.JavaLoggingFailureStrategy;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +18,7 @@ abstract class ListenerSupportBase<L> {
     private final Set<L> listeners = new HashSet<>();
     private final Executor notifyExecutor;
 
-    private FailureStrategy<? super L> failureStrategy = new JavaLoggingFailureStrategy();
+    private FailureStrategy<? super L> failureStrategy = FailureStrategies.createLog4jLogger();
 
     /**
      * Creates a new {@link ListenerSupportBase} that will notify the registered listeners using the given {@link Executor}.

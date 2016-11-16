@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 
 /**
- * A {@link FailureStrategy} implementation that will log exceptions using Log4j.
+ * A {@link FailureStrategy} implementation that will log thrown errors using Log4j.
  *
  * @author ISchwarz
  */
@@ -13,6 +13,11 @@ class Log4jFailureStrategy implements FailureStrategy<Object> {
 
     private final Level logLevel;
 
+    /**
+     * Creates a new {@link Log4jFailureStrategy} using the given log {@link Level}.
+     *
+     * @param logLevel The log {@link Level} that shall be used.
+     */
     Log4jFailureStrategy(final Level logLevel) {
         this.logLevel = logLevel;
     }

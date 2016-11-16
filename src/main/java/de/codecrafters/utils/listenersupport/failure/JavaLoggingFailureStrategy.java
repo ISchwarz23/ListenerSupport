@@ -4,13 +4,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by Ingo on 13.11.2016.
+ * A {@link FailureStrategy} implementation that logs the thrown error using the
+ * Java {@link Logger}.
+ *
+ * @author ISchwarz
  */
 class JavaLoggingFailureStrategy implements FailureStrategy<Object> {
 
+    private final Level logLevel;
+
+    /**
+     * Creates a new {@link JavaLoggingFailureStrategy} that uses the given log {@link Level}.
+     *
+     * @param logLevel The log {@link Level} that shall be used.
+     */
+    JavaLoggingFailureStrategy(final Level logLevel) {
+        this.logLevel = logLevel;
+    }
+
     @Override
-    public void onFailure(Object listener, Throwable t) {
-        Logger logger = Logger.getLogger(listener.getClass().getName());
-        logger.log(Level.ALL, "Exception thrown by Listener", t);
+    public void onFailure(final Object listener, final Throwable t) {
+        Logger.getLogger(listener.getClass().getName()).log(logLevel, "Exception thrown by Listener", t);
     }
 }
