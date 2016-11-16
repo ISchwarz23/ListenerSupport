@@ -28,9 +28,9 @@ public final class ListenerSupport3<L, A1, A2, A3> extends ListenerSupportBase<L
     private final ListenerNotifier<L, A1, A2, A3> notifier;
 
     /**
-     * Creates a new ListenerSupport that uses the given {@link ListenerSupport3.ListenerNotifier} and the given {@link Executor}.
+     * Creates a new ListenerSupport that uses the given {@link ListenerNotifier} and the given {@link Executor}.
      *
-     * @param notifier       The {@link ListenerSupport2.ListenerNotifier} that shall be used to notify the listeners.
+     * @param notifier       The {@link ListenerNotifier} that shall be used to notify the listeners.
      * @param notifyExecutor The {@link Executor} that shall be used to trigger the notification.
      */
     ListenerSupport3(final ListenerNotifier<L, A1, A2, A3> notifier, final Executor notifyExecutor) {
@@ -49,7 +49,7 @@ public final class ListenerSupport3<L, A1, A2, A3> extends ListenerSupportBase<L
         getListeners().forEach(listener -> notifyListener(listener, arg1, arg2, arg3));
     }
 
-    private void notifyListener(L listener, A1 arg1, A2 arg2, A3 arg3) {
+    private void notifyListener(final L listener, final A1 arg1, final A2 arg2, final A3 arg3) {
         notifyListenerInExecutor(listener, () -> notifier.notifyListener(listener, arg1, arg2, arg3));
     }
 }

@@ -51,7 +51,7 @@ public final class ListenerSupport1<L, A> extends ListenerSupportBase<L> {
         getListeners().forEach(listener -> notifyListener(listener, arg));
     }
 
-    private void notifyListener(L listener, A arg) {
+    private void notifyListener(final L listener, final A arg) {
         notifyListenerInExecutor(listener, () -> notifier.notifyListener(listener, arg));
     }
 }
