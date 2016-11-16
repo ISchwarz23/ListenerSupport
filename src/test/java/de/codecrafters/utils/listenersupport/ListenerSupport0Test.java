@@ -1,8 +1,11 @@
 package de.codecrafters.utils.listenersupport;
 
+import de.codecrafters.utils.listenersupport.failure.FailureStrategy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.concurrent.Executor;
 
 import static org.mockito.Mockito.*;
 
@@ -13,15 +16,15 @@ import static org.mockito.Mockito.*;
  */
 public class ListenerSupport0Test {
 
-    private interface ListenerWithOneArg {
+    private interface ListenerWithoutArg {
         void listenerMethod();
     }
 
-    private ListenerSupport0<ListenerWithOneArg> cut;
+    private ListenerSupport0<ListenerWithoutArg> cut;
 
     @Before
     public void setUp() throws Exception {
-        cut = ListenerSupport.createFor(ListenerWithOneArg::listenerMethod);
+        cut = ListenerSupport.createFor(ListenerWithoutArg::listenerMethod);
     }
 
     @After
@@ -32,7 +35,7 @@ public class ListenerSupport0Test {
     @Test
     public void shouldNotifyListener() throws Exception {
         // given
-        ListenerWithOneArg listenerMock = mock(ListenerWithOneArg.class);
+        ListenerWithoutArg listenerMock = mock(ListenerWithoutArg.class);
         cut.addListener(listenerMock);
 
         // when
@@ -45,9 +48,9 @@ public class ListenerSupport0Test {
     @Test
     public void shouldNotifyAllListeners() throws Exception {
         // given
-        ListenerWithOneArg listenerMock1 = mock(ListenerWithOneArg.class);
-        ListenerWithOneArg listenerMock2 = mock(ListenerWithOneArg.class);
-        ListenerWithOneArg listenerMock3 = mock(ListenerWithOneArg.class);
+        ListenerWithoutArg listenerMock1 = mock(ListenerWithoutArg.class);
+        ListenerWithoutArg listenerMock2 = mock(ListenerWithoutArg.class);
+        ListenerWithoutArg listenerMock3 = mock(ListenerWithoutArg.class);
         cut.addListener(listenerMock1);
         cut.addListener(listenerMock2);
         cut.addListener(listenerMock3);
@@ -64,10 +67,10 @@ public class ListenerSupport0Test {
     @Test
     public void shouldNotifyAllListenersIfOneListenerThrowsException() throws Exception {
         // given
-        final ListenerWithOneArg listenerMock1 = mock(ListenerWithOneArg.class);
-        final ListenerWithOneArg listenerMock2 = mock(ListenerWithOneArg.class);
+        final ListenerWithoutArg listenerMock1 = mock(ListenerWithoutArg.class);
+        final ListenerWithoutArg listenerMock2 = mock(ListenerWithoutArg.class);
         doThrow(new IllegalArgumentException()).when(listenerMock2).listenerMethod();
-        final ListenerWithOneArg listenerMock3 = mock(ListenerWithOneArg.class);
+        final ListenerWithoutArg listenerMock3 = mock(ListenerWithoutArg.class);
         cut.addListener(listenerMock1);
         cut.addListener(listenerMock2);
         cut.addListener(listenerMock3);
@@ -81,4 +84,37 @@ public class ListenerSupport0Test {
         verify(listenerMock3).listenerMethod();
     }
 
+    @Test
+    public void shouldUseGivenExecutorForNotification() throws Exception {
+        // given
+        final Executor executorMock = mock(Executor.class);
+        final ListenerSupport0<ListenerWithoutArg> cut =
+                ListenerSupport.createFor(ListenerWithoutArg::listenerMethod, executorMock);
+
+        final ListenerWithoutArg listenerMock = mock(ListenerWithoutArg.class);
+        cut.addListener(listenerMock);
+
+        // when
+        cut.notifyListeners();
+
+        // then
+        verify(executorMock).execute(any(Runnable.class));
+    }
+
+    @Test
+    public void shouldUseTheGivenFailureStrategy() throws Exception {
+        // given
+        final FailureStrategy<Object> failureStrategyMock = mock(FailureStrategy.class);
+        cut.setFailureStrategy(failureStrategyMock);
+
+        final ListenerWithoutArg listenerMock = mock(ListenerWithoutArg.class);
+        doThrow(new IllegalArgumentException()).when(listenerMock).listenerMethod();
+        cut.addListener(listenerMock);
+
+        // when
+        cut.notifyListeners();
+
+        // then
+        verify(failureStrategyMock).onFailure(any(), any());
+    }
 }
