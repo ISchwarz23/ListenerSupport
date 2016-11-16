@@ -40,10 +40,10 @@ public class ListenerSupport1Test {
         cut.addListener(listenerMock);
 
         // when
-        cut.notifyListeners("Hello");
+        cut.notifyListeners("hello");
 
         // then
-        verify(listenerMock).listenerMethod("Hello");
+        verify(listenerMock).listenerMethod("hello");
     }
 
     @Test
@@ -57,12 +57,12 @@ public class ListenerSupport1Test {
         cut.addListener(listenerMock3);
 
         // when
-        cut.notifyListeners("Hello");
+        cut.notifyListeners("hello");
 
         // then
-        verify(listenerMock1).listenerMethod("Hello");
-        verify(listenerMock2).listenerMethod("Hello");
-        verify(listenerMock3).listenerMethod("Hello");
+        verify(listenerMock1).listenerMethod("hello");
+        verify(listenerMock2).listenerMethod("hello");
+        verify(listenerMock3).listenerMethod("hello");
     }
 
     @Test
@@ -77,12 +77,12 @@ public class ListenerSupport1Test {
         cut.addListener(listenerMock3);
 
         // when
-        cut.notifyListeners("Hello");
+        cut.notifyListeners("hello");
 
         // then
-        verify(listenerMock1).listenerMethod("Hello");
-        verify(listenerMock2).listenerMethod("Hello");
-        verify(listenerMock3).listenerMethod("Hello");
+        verify(listenerMock1).listenerMethod("hello");
+        verify(listenerMock2).listenerMethod("hello");
+        verify(listenerMock3).listenerMethod("hello");
     }
 
     @Test
@@ -96,7 +96,7 @@ public class ListenerSupport1Test {
         cut.addListener(listenerMock);
 
         // when
-        cut.notifyListeners("bar");
+        cut.notifyListeners("hello");
 
         // then
         verify(executorMock).execute(any(Runnable.class));
@@ -113,7 +113,7 @@ public class ListenerSupport1Test {
         cut.addListener(listenerMock);
 
         // when
-        cut.notifyListeners("foo");
+        cut.notifyListeners("hello");
 
         // then
         verify(failureStrategyMock).onFailure(any(), any());
