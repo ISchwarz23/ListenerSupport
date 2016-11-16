@@ -2,6 +2,8 @@ package de.codecrafters.utils.listenersupport;
 
 import java.util.concurrent.Executor;
 
+import static de.codecrafters.utils.listenersupport.NotifyExecutor.currentThreadExecutor;
+
 /**
  * A ListenerSupport factory that supports listeners with methods up to three arguments.
  *
@@ -24,7 +26,7 @@ public class ListenerSupport {
     public static <L> ListenerSupport0<L> createFor(
             final ListenerSupport0.ListenerNotifier<L> notifier) {
 
-        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
+        return createFor(notifier, currentThreadExecutor());
     }
 
     /**
@@ -55,7 +57,7 @@ public class ListenerSupport {
     public static <L, D> ListenerSupport1<L, D> createFor(
             final ListenerSupport1.ListenerNotifier<L, D> notifier) {
 
-        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
+        return createFor(notifier, currentThreadExecutor());
     }
 
     /**
@@ -88,7 +90,7 @@ public class ListenerSupport {
     public static <L, D1, D2> ListenerSupport2<L, D1, D2> createFor(
             final ListenerSupport2.ListenerNotifier<L, D1, D2> notifier) {
 
-        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
+        return createFor(notifier, currentThreadExecutor());
     }
 
     /**
@@ -123,7 +125,7 @@ public class ListenerSupport {
     public static <L, D1, D2, D3> ListenerSupport3<L, D1, D2, D3> createFor(
             final ListenerSupport3.ListenerNotifier<L, D1, D2, D3> notifier) {
 
-        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
+        return createFor(notifier, currentThreadExecutor());
     }
 
     /**
@@ -160,7 +162,7 @@ public class ListenerSupport {
     public static <L, D1, D2, D3, D4> ListenerSupport4<L, D1, D2, D3, D4> createFor(
             final ListenerSupport4.ListenerNotifier<L, D1, D2, D3, D4> notifier) {
 
-        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
+        return createFor(notifier, currentThreadExecutor());
     }
 
     /**
