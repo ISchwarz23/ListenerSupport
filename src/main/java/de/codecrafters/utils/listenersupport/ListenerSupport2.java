@@ -3,7 +3,7 @@ package de.codecrafters.utils.listenersupport;
 import java.util.concurrent.Executor;
 
 /**
- * Implementation of ListenerSupport for callback method with one argument.
+ * Implementation of ListenerSupport for callback method with two arguments.
  *
  * @param <L>  The type of the listener that shall be notified.
  * @param <A1> The type of the first argument that shall be passed to the callback method.
@@ -13,7 +13,7 @@ import java.util.concurrent.Executor;
 public final class ListenerSupport2<L, A1, A2> extends ListenerSupportBase<L> {
 
     /**
-     * Interface for a listener notifiers with a callback methods with one argument.
+     * Interface for a listener notifiers with a callback methods with two arguments.
      *
      * @param <L>  The type of the listener that shall be notified.
      * @param <A1> The type of the first argument that shall be passed to the callback method.
