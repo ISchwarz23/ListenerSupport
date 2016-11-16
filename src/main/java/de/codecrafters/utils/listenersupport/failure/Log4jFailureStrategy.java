@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
  *
  * @author ISchwarz
  */
-class Log4jFailureStrategy implements FailureStrategy<Object> {
+final class Log4jFailureStrategy implements FailureStrategy<Object> {
 
     private final Level logLevel;
 
