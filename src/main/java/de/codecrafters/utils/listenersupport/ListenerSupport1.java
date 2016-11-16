@@ -43,7 +43,7 @@ public final class ListenerSupport1<L, D> extends ListenerSupportBase<L> {
     }
 
     /**
-     * Notifies the registered listeners with the given data.
+     * Notifies the registered listeners with the given argument.
      *
      * @param data The data that shall be passed to the listeners.
      */
