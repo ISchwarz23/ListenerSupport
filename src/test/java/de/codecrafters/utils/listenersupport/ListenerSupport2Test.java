@@ -11,7 +11,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 /**
- * Tests for the {@link ListenerSupport1}.
+ * Tests for the {@link ListenerSupport2}.
  *
  * @author ISchwarz
  */
