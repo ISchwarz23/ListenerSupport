@@ -20,7 +20,7 @@ public final class ListenerSupport2<L, A1, A2> extends ListenerSupportBase<L> {
      * @param <A2> The type of the second argument that shall be passed to the callback method.
      */
     public interface ListenerNotifier<L, A1, A2> {
-        void notifyListener(L listener, A1 arg1, A2 arg2);
+        void notifyListener(final L listener, final A1 arg1, final A2 arg2);
     }
 
     private final ListenerNotifier<L, A1, A2> notifier;

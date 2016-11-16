@@ -22,7 +22,7 @@ public final class ListenerSupport3<L, A1, A2, A3> extends ListenerSupportBase<L
      * @param <A3> The type of the third argument that shall be passed to the callback method.
      */
     public interface ListenerNotifier<L, A1, A2, A3> {
-        void notifyListener(L listener, A1 arg1, A2 arg2, A3 arg3);
+        void notifyListener(final L listener, final A1 arg1, final A2 arg2, final A3 arg3);
     }
 
     private final ListenerNotifier<L, A1, A2, A3> notifier;

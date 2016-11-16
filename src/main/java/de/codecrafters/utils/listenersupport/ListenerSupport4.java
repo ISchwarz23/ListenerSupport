@@ -24,7 +24,7 @@ public final class ListenerSupport4<L, A1, A2, A3, A4> extends ListenerSupportBa
      * @param <A4> The type of the fourth argument that shall be passed to the callback method.
      */
     public interface ListenerNotifier<L, A1, A2, A3, A4> {
-        void notifyListener(L listener, A1 arg1, A2 arg2, A3 arg3, A4 arg4);
+        void notifyListener(final L listener, final A1 arg1, final A2 arg2, final A3 arg3, final A4 arg4);
     }
 
     private final ListenerNotifier<L, A1, A2, A3, A4> notifier;

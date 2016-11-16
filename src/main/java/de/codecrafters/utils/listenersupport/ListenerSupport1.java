@@ -26,7 +26,7 @@ public final class ListenerSupport1<L, A> extends ListenerSupportBase<L> {
          * @param listener The listener that shall be notified.
          * @param arg      The argument that shall be passed to the listener.
          */
-        void notifyListener(L listener, A arg);
+        void notifyListener(final L listener, final A arg);
     }
 
     private final ListenerNotifier<L, A> notifier;

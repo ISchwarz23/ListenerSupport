@@ -23,7 +23,7 @@ public final class ListenerSupport0<L> extends ListenerSupportBase<L> {
          *
          * @param listener The listener that shall be notified.
          */
-        void notifyListener(L listener);
+        void notifyListener(final L listener);
     }
 
     private final ListenerNotifier<L> notifier;

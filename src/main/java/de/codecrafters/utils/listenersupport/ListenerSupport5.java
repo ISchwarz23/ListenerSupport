@@ -26,7 +26,7 @@ public final class ListenerSupport5<L, A1, A2, A3, A4, A5> extends ListenerSuppo
      * @param <A5> The type of the fifth argument that shall be passed to the callback method.
      */
     public interface ListenerNotifier<L, A1, A2, A3, A4, A5> {
-        void notifyListener(L listener, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5);
+        void notifyListener(final L listener, final A1 arg1, final A2 arg2, final A3 arg3, final A4 arg4, final it A5 arg5);
     }
 
     private final ListenerNotifier<L, A1, A2, A3, A4, A5> notifier;
