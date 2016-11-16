@@ -15,7 +15,7 @@ public class ListenerSupport {
 
     /**
      * Creates a ListenerSupport for a callback method without arguments. The notification will be done in the
-     * thread from which the notifyListeners() method is done.
+     * thread from which the notifyListeners() method is called.
      *
      * @param notifier The {@link ListenerSupport0.ListenerNotifier} that shall be used to notify the listener.
      * @param <L>      The type of the listener that shall be notified.
@@ -45,7 +45,7 @@ public class ListenerSupport {
 
     /**
      * Creates a ListenerSupport for a callback method with one argument. The notification will be done in the
-     * thread from which the notifyListeners() method is done.
+     * thread from which the notifyListeners() method is called.
      *
      * @param notifier The {@link ListenerSupport1.ListenerNotifier} that shall be used to notify the listener.
      * @param <L>      The type of the listener that shall be notified.
@@ -77,7 +77,7 @@ public class ListenerSupport {
 
     /**
      * Creates a ListenerSupport for a callback method with two arguments. The notification will be done in the
-     * thread from which the notifyListeners() method is done.
+     * thread from which the notifyListeners() method is called.
      *
      * @param notifier The {@link ListenerSupport2.ListenerNotifier} that shall be used to notify the listener.
      * @param <L>      The type of the listener that shall be notified.
@@ -111,7 +111,7 @@ public class ListenerSupport {
 
     /**
      * Creates a ListenerSupport for a callback method with three arguments. The notification will be done in the
-     * thread from which the notifyListeners() method is done.
+     * thread from which the notifyListeners() method is called.
      *
      * @param notifier The {@link ListenerSupport3.ListenerNotifier} that shall be used to notify the listener.
      * @param <L>      The type of the listener that shall be notified.
@@ -143,6 +143,44 @@ public class ListenerSupport {
             final Executor executor) {
 
         return new ListenerSupport3<>(notifier, executor);
+    }
+
+    /**
+     * Creates a ListenerSupport for a callback method with four arguments. The notification will be done in the
+     * thread from which the notifyListeners() method is called.
+     *
+     * @param notifier The {@link ListenerSupport4.ListenerNotifier} that shall be used to notify the listener.
+     * @param <L>      The type of the listener that shall be notified.
+     * @param <D1>     The type of the first argument that will be passed to the listener on notify.
+     * @param <D2>     The type of the second argument that will be passed to the listener on notify.
+     * @param <D3>     The type of the third argument that will be passed to the listener on notify.
+     * @param <D4>     The type of the fourth argument that will be passed to the listener on notify.
+     * @return The created {@link ListenerSupport4}.
+     */
+    public static <L, D1, D2, D3, D4> ListenerSupport4<L, D1, D2, D3, D4> createFor(
+            final ListenerSupport4.ListenerNotifier<L, D1, D2, D3, D4> notifier) {
+
+        return createFor(notifier, NotifyExecutors.createCurrentThreadExecutor());
+    }
+
+    /**
+     * Creates a ListenerSupport for a callback method with four arguments. The notification will be done using the
+     * given {@link Executor}.
+     *
+     * @param notifier The {@link ListenerSupport4.ListenerNotifier} that shall be used to notify the listener.
+     * @param executor The {@link Executor} that will be used to notify the listeners.
+     * @param <L>      The type of the listener that shall be notified.
+     * @param <D1>     The type of the first argument that will be passed to the listener on notify.
+     * @param <D2>     The type of the second argument that will be passed to the listener on notify.
+     * @param <D3>     The type of the third argument that will be passed to the listener on notify.
+     * @param <D4>     The type of the fourth argument that will be passed to the listener on notify.
+     * @return The created {@link ListenerSupport4}.
+     */
+    public static <L, D1, D2, D3, D4> ListenerSupport4<L, D1, D2, D3, D4> createFor(
+            final ListenerSupport4.ListenerNotifier<L, D1, D2, D3, D4> notifier,
+            final Executor executor) {
+
+        return new ListenerSupport4<>(notifier, executor);
     }
 
 }
