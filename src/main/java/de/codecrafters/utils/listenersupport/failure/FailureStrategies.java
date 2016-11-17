@@ -17,8 +17,8 @@ public final class FailureStrategies {
      *
      * @return The created {@link FailureStrategy}.
      */
-    public static FailureStrategy<Object> createLog4jLogger() {
-        return createLog4jLogger(org.apache.logging.log4j.Level.ERROR);
+    public static FailureStrategy<Object> newLog4jLogger() {
+        return newLog4jLogger(org.apache.logging.log4j.Level.ERROR);
     }
 
     /**
@@ -27,7 +27,7 @@ public final class FailureStrategies {
      *
      * @return The created {@link FailureStrategy}.
      */
-    public static FailureStrategy<Object> createLog4jLogger(final org.apache.logging.log4j.Level logLevel) {
+    public static FailureStrategy<Object> newLog4jLogger(final org.apache.logging.log4j.Level logLevel) {
         return new Log4jFailureStrategy(logLevel);
     }
 
@@ -37,8 +37,8 @@ public final class FailureStrategies {
      *
      * @return The created {@link FailureStrategy}.
      */
-    public static FailureStrategy<Object> createJavaLogger() {
-        return createJavaLogger(java.util.logging.Level.FINEST);
+    public static FailureStrategy<Object> newJavaLogger() {
+        return newJavaLogger(java.util.logging.Level.FINEST);
     }
 
     /**
@@ -47,7 +47,7 @@ public final class FailureStrategies {
      *
      * @return The created {@link FailureStrategy}.
      */
-    public static FailureStrategy<Object> createJavaLogger(final java.util.logging.Level logLevel) {
+    public static FailureStrategy<Object> newJavaLogger(final java.util.logging.Level logLevel) {
         return new JavaLoggingFailureStrategy(logLevel);
     }
 }

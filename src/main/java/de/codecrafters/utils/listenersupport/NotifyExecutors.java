@@ -16,7 +16,7 @@ public final class NotifyExecutors {
     }
 
     /**
-     * Creates a new {@link Executor} that will run all actions using the {@link EventQueue}.
+     * Gives a {@link Executor} that will run all actions in the UI thread using the {@link EventQueue}.
      *
      * @return The created {@link Executor} using the {@link EventQueue}.
      */
@@ -25,7 +25,7 @@ public final class NotifyExecutors {
     }
 
     /**
-     * Creates a new {@link Executor} that will run all actions in the current {@link Thread}.
+     * Gives a {@link Executor} that will run all actions in the current {@link Thread}.
      *
      * @return The created {@link Executor} using the current {@link Thread}.
      */
@@ -39,7 +39,7 @@ public final class NotifyExecutors {
      *
      * @return The created {@link Executor} using a separate {@link Thread}.
      */
-    public static Executor separateThreadExecutor() {
+    public static Executor newSeparateThreadExecutor() {
         return Executors.newSingleThreadExecutor();
     }
 
@@ -50,7 +50,7 @@ public final class NotifyExecutors {
      * @param numberOfThreads The size of the thread pool.
      * @return The created {@link Executor} using a ThreadPool.
      */
-    public static Executor separateThreadsExecutor(final int numberOfThreads) {
+    public static Executor newSeparateThreadsExecutor(final int numberOfThreads) {
         return Executors.newFixedThreadPool(numberOfThreads);
     }
 

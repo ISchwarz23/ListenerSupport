@@ -18,7 +18,7 @@ abstract class ListenerSupportBase<L> {
     private final Set<L> listeners = new HashSet<>();
     private final Executor notifyExecutor;
 
-    private FailureStrategy<? super L> failureStrategy = FailureStrategies.createLog4jLogger();
+    private FailureStrategy<? super L> failureStrategy = FailureStrategies.newLog4jLogger();
 
     /**
      * Creates a new {@link ListenerSupportBase} that will notify the registered listeners using the given {@link Executor}.
