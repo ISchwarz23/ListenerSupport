@@ -12,6 +12,15 @@ public final class FailureStrategies {
     }
 
     /**
+     * Creates a new {@link FailureStrategy} that uses the System.err writer to print the caught {@link Throwable}s.
+     *
+     * @return The created {@link FailureStrategy}.
+     */
+    public static FailureStrategy<Object> newSystemErrorWriter() {
+        return new SystemErrorFailureStrategy();
+    }
+
+    /**
      * Creates a new {@link FailureStrategy} that uses the Log4j {@link org.apache.logging.log4j.Logger} to log the
      * thrown errors in {@code ERROR} level.
      *
