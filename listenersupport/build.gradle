@@ -5,5 +5,10 @@ apply plugin: 'java'
 
 dependencies {
     compile project(":failurestrategy-api")
-    compile project(":failurestrategy-systemerrorwriter")
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+
+    runtime project(":failurestrategy-systemerrorwriter")
+    runtime project(":failurestrategy-javalogger")
+    runtime project(":failurestrategy-log4jlogger")
+    runtime group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
 }
