@@ -1,7 +1,6 @@
 package de.codecrafters.listenersupport;
 
 import de.codecrafters.listenersupport.failure.FailureStrategy;
-import de.codecrafters.listenersupport.failure.SystemErrorFailureStrategy;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +17,7 @@ abstract class ListenerSupportBase<L> {
     private final Set<L> listeners = new HashSet<>();
     private final Executor notifyExecutor;
 
-    private FailureStrategy<? super L> failureStrategy = new SystemErrorFailureStrategy();
+    private FailureStrategy failureStrategy = FailureStrategyLoader.createNewFailureStrategy();
 
     /**
      * Creates a new {@link ListenerSupportBase} that will notify the registered listeners using the given {@link Executor}.
@@ -55,7 +54,7 @@ abstract class ListenerSupportBase<L> {
      *
      * @param failureStrategy The {@link FailureStrategy} that shall be used.
      */
-    public void setFailureStrategy(FailureStrategy<? super L> failureStrategy) {
+    public void setFailureStrategy(FailureStrategy failureStrategy) {
         this.failureStrategy = failureStrategy;
     }
 
@@ -94,7 +93,7 @@ abstract class ListenerSupportBase<L> {
      *
      * @return The {@link FailureStrategy} that is currently used.
      */
-    private FailureStrategy<? super L> getFailureStrategy() {
+    private FailureStrategy getFailureStrategy() {
         return failureStrategy;
     }
 }

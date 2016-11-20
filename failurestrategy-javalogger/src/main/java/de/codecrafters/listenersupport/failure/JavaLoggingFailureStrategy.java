@@ -9,7 +9,7 @@ import java.util.logging.Logger;
  *
  * @author ISchwarz
  */
-public final class JavaLoggingFailureStrategy implements FailureStrategy<Object> {
+public final class JavaLoggingFailureStrategy implements FailureStrategy {
 
     private final Level logLevel;
 

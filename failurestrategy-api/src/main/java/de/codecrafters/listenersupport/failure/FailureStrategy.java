@@ -5,14 +5,14 @@ package de.codecrafters.listenersupport.failure;
  *
  * @author ISchwarz
  */
-public interface FailureStrategy<L> {
+public interface FailureStrategy {
 
     /**
      * Callback method that is called when an {@link Throwable} is thrown during listener notification.
      *
-     * @param listener  The listener that have been notified.
+     * @param listener  The listener that has been notified.
      * @param throwable The {@link Throwable} that has been thrown.
      */
-    void onFailure(final L listener, final Throwable throwable);
+    void onFailure(final Object listener, final Throwable throwable);
 
 }

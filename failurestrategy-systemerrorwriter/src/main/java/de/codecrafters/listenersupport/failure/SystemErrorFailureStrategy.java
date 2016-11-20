@@ -6,7 +6,7 @@ package de.codecrafters.listenersupport.failure;
  *
  * @author ISchwarz
  */
-public final class SystemErrorFailureStrategy implements FailureStrategy<Object> {
+public final class SystemErrorFailureStrategy implements FailureStrategy {
 
     /**
      * Creates a new {@link SystemErrorFailureStrategy} that will write the caught {@link Throwable}s using

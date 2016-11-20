@@ -19,6 +19,6 @@ public interface FailureStrategyPlugin {
      *
      * @return The newly created instance of the managed {@link FailureStrategy}.
      */
-    FailureStrategy<?> createNewInstance();
+    FailureStrategy createNewInstance();
 
 }

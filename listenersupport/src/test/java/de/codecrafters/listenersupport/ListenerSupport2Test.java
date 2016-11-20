@@ -105,7 +105,7 @@ public class ListenerSupport2Test {
     @Test
     public void shouldUseTheGivenFailureStrategy() throws Exception {
         // given
-        final FailureStrategy<Object> failureStrategyMock = mock(FailureStrategy.class);
+        final FailureStrategy failureStrategyMock = mock(FailureStrategy.class);
         cut.setFailureStrategy(failureStrategyMock);
 
         final ListenerWithTwoArgs listenerMock = mock(ListenerWithTwoArgs.class);
