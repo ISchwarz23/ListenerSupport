@@ -1,5 +1,6 @@
 package de.codecrafters.listenersupport.failure;
 
+
 /**
  * A collection of predefined {@link FailureStrategy}s.
  *
@@ -38,6 +39,26 @@ public final class FailureStrategies {
      */
     public static FailureStrategy newLog4jLogger(final org.apache.logging.log4j.Level logLevel) {
         return new Log4jFailureStrategy(logLevel);
+    }
+
+    /**
+     * Creates a new {@link FailureStrategy} that uses the Slf4j {@link org.slf4j.Logger} to log the
+     * thrown errors in {@code ERROR} level.
+     *
+     * @return The created {@link FailureStrategy}.
+     */
+    public static FailureStrategy newSlf4jLogger() {
+        return newSlf4jLogger(Slf4jFailureStrategy.Level.ERROR);
+    }
+
+    /**
+     * Creates a new {@link FailureStrategy} that uses the Slf4j {@link org.slf4j.Logger} to log the
+     * thrown errors in the given log level.
+     *
+     * @return The created {@link FailureStrategy}.
+     */
+    public static FailureStrategy newSlf4jLogger(final Slf4jFailureStrategy.Level logLevel) {
+        return new Slf4jFailureStrategy(logLevel);
     }
 
     /**

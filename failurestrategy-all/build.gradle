@@ -5,6 +5,7 @@ apply plugin: 'java'
 
 dependencies {
     compile project(":failurestrategy-javalogger")
-    compile project(":failurestrategy-log4jlogger")
     compile project(":failurestrategy-systemerrorwriter")
+    compile project(":failurestrategy-log4j")
+    compile project(":failurestrategy-slf4j")
 }

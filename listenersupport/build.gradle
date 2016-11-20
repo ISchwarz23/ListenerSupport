@@ -9,7 +9,7 @@ dependencies {
 
     runtime project(":failurestrategy-systemerrorwriter")
     runtime project(":failurestrategy-javalogger")
-    runtime project(":failurestrategy-log4jlogger")
+    runtime project(":failurestrategy-log4j")
     runtime project(":failurestrategy-slf4j")
     runtime group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
 }
