@@ -1,2 +1,8 @@
-rootProject.name = 'listenersupport'
+rootProject.name = 'ListenerSupport'
+include 'failurestrategy-all'
+include 'failurestrategy-api'
+include 'failurestrategy-javalogger'
+include 'failurestrategy-log4jlogger'
+include 'failurestrategy-systemerrorwriter'
+include 'listenersupport'
 

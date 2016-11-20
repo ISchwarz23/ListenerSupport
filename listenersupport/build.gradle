@@ -8,5 +8,9 @@ repositories {
 }
 
 dependencies {
+    compile project(":failurestrategy-api")
+    compile project(":failurestrategy-systemerrorwriter")
+
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
 }

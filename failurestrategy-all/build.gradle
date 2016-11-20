@@ -8,5 +8,9 @@ repositories {
 }
 
 dependencies {
+    compile project(":failurestrategy-javalogger")
+    compile project(":failurestrategy-log4jlogger")
+    compile project(":failurestrategy-systemerrorwriter")
+
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
