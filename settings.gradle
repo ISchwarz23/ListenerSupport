@@ -5,4 +5,5 @@ include 'failurestrategy-javalogger'
 include 'failurestrategy-log4jlogger'
 include 'failurestrategy-systemerrorwriter'
 include 'listenersupport'
+include 'failurestrategy-slf4j'
 
