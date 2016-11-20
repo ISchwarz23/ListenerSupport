@@ -9,7 +9,7 @@ import static de.codecrafters.listenersupport.NotifyExecutors.currentThreadExecu
  *
  * @author ISchwarz
  */
-public class ListenerSupport {
+public final class ListenerSupport {
 
     private ListenerSupport() {
         //no instance
