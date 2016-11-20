@@ -3,10 +3,12 @@ version '0.9-SNAPSHOT'
 
 apply plugin: 'java'
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+        testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
+    }
 }

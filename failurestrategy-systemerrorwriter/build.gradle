@@ -3,12 +3,6 @@ version '0.9-SNAPSHOT'
 
 apply plugin: 'java'
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     compile project(":failurestrategy-api")
-
-    testCompile group: 'junit', name: 'junit', version: '4.11'
 }
