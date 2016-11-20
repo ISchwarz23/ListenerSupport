@@ -14,6 +14,6 @@ public class Slf4jFailureStrategyPlugin implements FailureStrategyPlugin {
 
     @Override
     public FailureStrategy createNewInstance() {
-        return new Slf4jFailureStrategy();
+        return new Slf4jFailureStrategy(Slf4jFailureStrategy.Level.ERROR);
     }
 }
