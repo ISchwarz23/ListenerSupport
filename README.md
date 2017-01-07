@@ -3,6 +3,8 @@ A very lightweight library, that simplifies the usage of custom listeners. It is
 by the `PropertyChangeSupport` but it has the advantage of a custom listener implementation
 like type safety.  
 
+**Minimum Java-Version:** 8 |  **Compile Java-Version:** 8 |  **Latest Library Version:** 0.9.0  
+
 ## ListenerSupport Features
 As soon as you are going to create a listener interface for your view, model, controller or any other part of
 your application, you have to write a lot of boilerplate code to manage and notify this listeners. This is where 
