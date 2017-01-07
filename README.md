@@ -71,13 +71,13 @@ to register a `FailureStrategy` to the `ListenerSupport`. That `FailureStrategy`
 called whenever a listener has thrown a `Throwable`.
 
 There are already multiple `FailureStrategie`s available to be used:  
-| Name                           | Artifact                                                            |  
-| ------------------------------ | ------------------------------------------------------------------- |  
-| JavaLoggingFailureStrategy     | `de.codecrafters.listenersupport:failurestrategy-javalogger`        |  
-| Log4jFailureStrategy           | `de.codecrafters.listenersupport:failurestrategy-log4j`             |  
-| PrintStackTraceFailureStrategy | none (set if no other available)                                    |  
-| Slf4jFailureStrategy           | `de.codecrafters.listenersupport:failurestrategy-slf4j`             |  
-| SystemErrorFailureStrategy     | `de.codecrafters.listenersupport:failurestrategy-systemerrorwriter` |  
+| Name | Artifact |
+| --- | --- |
+| JavaLoggingFailureStrategy | `de.codecrafters.listenersupport:failurestrategy-javalogger` |
+| Log4jFailureStrategy | `de.codecrafters.listenersupport:failurestrategy-log4j` |
+| PrintStackTraceFailureStrategy | none (set if no other available) |
+| Slf4jFailureStrategy | `de.codecrafters.listenersupport:failurestrategy-slf4j` |
+| SystemErrorFailureStrategy | `de.codecrafters.listenersupport:failurestrategy-systemerrorwriter` |
 
 If you want to apply any of these failure strategies, just add it as runtime dependency to your project. It'll be
 automatically used for every `ListenerSupport` you create.
