@@ -24,7 +24,7 @@ public final class FailureStrategyLoader {
     private static final String FAILURE_STRATEGY_LOADER_PROPERTIES = "failurestrategyloader.properties";
 
     private static final Map<String, FailureStrategyPlugin> FAILURE_STRATEGY_PLUGINS = new HashMap<>();
-    private static FailureStrategyPlugin currentPlugin = new NoOperationFailureStrategy();
+    private static FailureStrategyPlugin currentPlugin = new PrintStackTraceFailureStrategy();
 
     static {
         loadPlugins();
@@ -97,17 +97,16 @@ public final class FailureStrategyLoader {
         return false;
     }
 
-    private static final class NoOperationFailureStrategy implements FailureStrategyPlugin {
+    private static final class PrintStackTraceFailureStrategy implements FailureStrategyPlugin {
 
         @Override
         public String getName() {
-            return NoOperationFailureStrategy.class.getSimpleName();
+            return PrintStackTraceFailureStrategy.class.getSimpleName();
         }
 
         @Override
         public FailureStrategy createNewInstance() {
-            return (listener, throwable) -> {
-            };
+            return (listener, throwable) -> throwable.printStackTrace();
         }
     }
 

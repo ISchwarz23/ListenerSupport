@@ -1,17 +1,26 @@
+[![Build Status](https://travis-ci.org/ISchwarz23/ListenerSupport.svg?branch=master)](https://travis-ci.org/ISchwarz23/ListenerSupport) 
+[![Download](https://api.bintray.com/packages/ischwarz/maven/ListenerSupport/images/download.svg)](https://bintray.com/ischwarz/maven/ListenerSupport/_latestVersion)
+
 # ListenerSupport
 A very lightweight library, that simplifies the usage of custom listeners. It is inspired
 by the `PropertyChangeSupport` but it has the advantage of a custom listener implementation
 like type safety.  
 
-**Minimum Java-Version:** 8 |  **Compile Java-Version:** 8 |  **Latest Library Version:** 0.9.0  
+**Minimum Java-Version:** 8  |  **Compile Java-Version:** 8  |  **Latest Library Version:** 0.9.0   
 
 ## ListenerSupport Features
 As soon as you are going to create a listener interface for your view, model, controller or any other part of
-your application, you have to write a lot of boilerplate code to manage and notify this listeners. This is where 
-the `ListenerSupport` comes in place.  
+your application, you have to write a lot of boilerplate code to manage and notify this listeners, like...
+- manage a collection to store the listeners
+- add new listeners to that collection (after checking that it is not part of it, yet)
+- removing old listeners from that collection (after checking that it was part of it)
+- iterate over the whole collection to notify these listeners with the specific params
+- catch exceptions thrown by the listeners to avoid errors
+- make sure the notification is done in the correct thread
+- ...
 
-The `ListenerSupport` is capable of managing your listeners (add or remove them). The notification of these registered 
-listeners is only one method call.  
+This is where the `ListenerSupport` library comes in place. The `ListenerSupport` simplifies the 
+management of your listeners. Adding, removing and notifying them is now only ONE method call.  
 
 On top of that, you can...
 - define `Executor`s that will be used to do this notification (e.g. do a notification in the 
@@ -19,34 +28,83 @@ UI-Thread).
 - define `FailureStrategie`s that will be called, when any listener throws an exception on notification call.
 
 ## ListenerSupport Creation
-The following example will use the following listener interface definition.
+The following example will the listener interface definition below.
 ```java
 public interface MyListener {
     void onSomethingHappened( final String something );
 }
 ```
-To create a `ListenerSupport` for such a listener implementation you simply use the
+To create a `ListenerSupport` for any listener definition, you simply use the
 `ListenerSupport` class.
 ```java
 myListenerSupport = ListenerSupport.createFor( MyListener::onSomethingHappened );
 ```
 This simple call will create a ListenerSupport that enables you to add and remove
-listeners of type `MyListener` and provides a `notify()`-method with argument type 
-`String` (like defined in the listener interface).  
+listeners of type `MyListener` and provides a `notifyListeners()`-method which takes the same arguments
+as the `MyListener#onSomethingHappened` method.  
+
+## Manage Listeners
+As described in the "ListenerSupport Creation" section, after the creation you are able to use
+type safe methods to add, remove and notify listeners.  
+
+So if we use the example above, the `myListenerSupport` will provide the following methods (among others):  
+`myListenerSupport#addListener( MyListener )`  
+`myListenerSupport#removeListener( MyListener )`  
+`myListenerSupport#notifyListeners( String )`  
+
+The most interesting of these methods is the notify method, which has exactly the same arguments as the 
+method that shall be called (in this case it's the `MyListener#onSomethingHappened` method).
 
 ## Notify Executors
-In addition to the example above you can pass an `Executor` as second parameter to the 
-`ListenerSupport#createFor()` method, which will be used to notify the registered
-listeners. 
+To define in which thread the notification is done, or if the notifications are done serial or in 
+parallel you can give an `Executor` that will be used. Simply pass the `Executor` that shall be used
+for notification as second parameter to the `ListenerSupport#createFor()` method. 
 ```java
 myListenerSupport = ListenerSupport.createFor( MyListener::onSomethingHappened, NotifyExecutors.uiThreadExecutor() );
 ```
-If no `Executor` is passed, the listeners it'll notify the listeners in the thread that called
-the `notify()` method.
+If no `Executor` is passed, it'll notify the listeners in the thread from which the `notify()` method 
+was called.
 
 ## Failure Strategies
-As there can be errors thrown by listeners that are notified. There is the possibility
+As there can be errors thrown by listeners that are notified, there is the possibility
 to register a `FailureStrategy` to the `ListenerSupport`. That `FailureStrategy` is
-called whenever a listener has thrown an exception.
+called whenever a listener has thrown a `Throwable`.
 
+There are already multiple `FailureStrategie`s available to be used:
+| Name                           | Artifact                                                            |  
+| ------------------------------ | ------------------------------------------------------------------- |  
+| JavaLoggingFailureStrategy     | `de.codecrafters.listenersupport:failurestrategy-javalogger`        |  
+| Log4jFailureStrategy           | `de.codecrafters.listenersupport:failurestrategy-log4j`             |  
+| PrintStackTraceFailureStrategy | none (set if no other available)                                    |  
+| Slf4jFailureStrategy           | `de.codecrafters.listenersupport:failurestrategy-slf4j`             |  
+| SystemErrorFailureStrategy     | `de.codecrafters.listenersupport:failurestrategy-systemerrorwriter` |  
+
+If you want to apply any of these failure strategies, just add it as runtime dependency to your project. It'll be
+automatically used for every `ListenerSupport` you create.
+If you have multiple failure strategies in your classpath you can define the default one by creating a property file
+called "failurestrategyloader.properties" and set the name of the strategy that shall be the default for the
+property called "strategyName".  
+
+If you need to set the failure strategy different for any `ListenerSupport` just use the 
+`ListenerSupport#setFailureStrategy()` method.
+
+If you want to have all failure strategies available just use the `de.codecrafters.listenersupport:failurestrategy-all` 
+artifact. This one also contains a factory called `FailureStrategies` that simplifies the creation for all failure
+strategies.  
+
+If the available failure strategies are not fulfilling your needs, you could of cause create your custom strategy.
+
+#### JavaLoggingFailureStrategy
+To be continued...
+
+#### Log4jFailureStrategy
+To be continued...
+
+#### PrintStackTraceFailureStrategy
+To be continued...
+
+#### Slf4jFailureStrategy
+To be continued...
+
+#### SystemErrorFailureStrategy
 To be continued...
