@@ -71,6 +71,7 @@ to register a `FailureStrategy` to the `ListenerSupport`. That `FailureStrategy`
 called whenever a listener has thrown a `Throwable`.
 
 There are already multiple `FailureStrategie`s available to be used:  
+
 | Name | Artifact |
 | --- | --- |
 | JavaLoggingFailureStrategy | `de.codecrafters.listenersupport:failurestrategy-javalogger` |
