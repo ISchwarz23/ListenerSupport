@@ -8,7 +8,7 @@ like type safety.
 
 **Minimum Java-Version:** 8  |  **Compile Java-Version:** 8  |  **Latest Library Version:** 0.9.0   
 
-## ListenerSupport Features
+## Features
 As soon as you are going to create a listener interface for your view, model, controller or any other part of
 your application, you have to write a lot of boilerplate code to manage and notify this listeners, like...
 - manage a collection to store the listeners
@@ -26,6 +26,22 @@ On top of that, you can...
 - define `Executor`s that will be used to do this notification (e.g. do a notification in the 
 UI-Thread). 
 - define `FailureStrategie`s that will be called, when any listener throws an exception on notification call.
+
+## Add it to your Project
+1) Add JCenter to your artifact repositories
+```groovy
+// using gradle
+repositories {
+    jcenter()
+}
+```
+2) Add the ListenerSupport to your dependencies
+```groovy
+// using gradle
+dependencies {
+    compile 'de.codecrafters.listenersupport:listenersupport:<version>'
+}
+```
 
 ## ListenerSupport Creation
 The following example will the listener interface definition below.
