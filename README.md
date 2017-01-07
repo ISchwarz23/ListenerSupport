@@ -5,7 +5,7 @@
 A very lightweight library, that simplifies the usage of custom listeners. It is inspired
 by the `PropertyChangeSupport` but it has the advantage of a custom listener implementation
 like type safety.  
-
+![ListenerSupport-Logo](https://raw.githubusercontent.com/ISchwarz23/ListenerSupport/master/readme/listenersupport-logo-with-name.png)  
 **Minimum Java-Version:** 8  |  **Compile Java-Version:** 8  |  **Latest Library Version:** 0.9.0   
 
 ## Features
