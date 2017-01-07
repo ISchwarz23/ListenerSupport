@@ -22,6 +22,11 @@ ext {
     allLicenses = ["Apache-2.0"]
 }
 
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+}
+
 dependencies {
     compile project(":failurestrategy-api")
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
@@ -30,10 +35,4 @@ dependencies {
     testRuntime project(":failurestrategy-javalogger")
     testRuntime project(":failurestrategy-log4j")
     testRuntime project(":failurestrategy-slf4j")
-}
-
-// do a 'gradlew install' followed by a 'gradlew bintrayUpload'
-if (project.rootProject.file('local.properties').exists()) {
-    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 }

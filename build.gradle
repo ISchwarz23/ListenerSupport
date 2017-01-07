@@ -1,7 +1,13 @@
 group 'de.codecrafters.listenersupport'
 version '0.9.0'
 
+// To publish on Bintray do:
+// 1. gradlew install
+// 2. gradlew bintrayUpload
+
+
 subprojects {
+
     apply plugin: 'java'
 
     repositories {
@@ -14,6 +20,7 @@ subprojects {
     }
 
     buildscript {
+
         repositories {
             jcenter()
         }

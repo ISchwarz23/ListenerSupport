@@ -1,7 +1,32 @@
-group 'de.codecrafters.listenersupport'
-version '0.9-SNAPSHOT'
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'ListenerSupport'
 
-apply plugin: 'java'
+    publishedGroupId = parent.group
+    libraryName = 'ListenerSupport - FailureStrategy - Log2j'
+    artifact = 'failurestrategy-log4j'
+
+    libraryDescription = 'A failure strategy to be used with the listener support library, that uses log4j ' +
+            'to log the thrown errors.'
+
+    siteUrl = 'https://github.com/ISchwarz23/ListenerSupport'
+    gitUrl = 'https://github.com/ISchwarz23/ListenerSupport.git'
+
+    libraryVersion = parent.version
+
+    developerId = 'ischwarz'
+    developerName = 'Ingo Schwarz'
+    developerEmail = 'schwarz-ingo@web.de'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+}
 
 dependencies {
     compile project(":failurestrategy-api")
