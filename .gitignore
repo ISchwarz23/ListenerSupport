@@ -58,3 +58,4 @@ hs_err_pid*
 # My Files #
 todo.txt
 listenersupport/failurestrategyloader.properties
+/local.properties
