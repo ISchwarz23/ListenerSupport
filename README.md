@@ -112,16 +112,21 @@ strategies.
 If the available failure strategies are not fulfilling your needs, you could of cause create your custom strategy.
 
 #### JavaLoggingFailureStrategy
-To be continued...
+A `FailureStrategy` implementation that will log the thrown errors using the `java.util.logging.Logger`. The used 
+log level is `ERROR`.
 
 #### Log4jFailureStrategy
-To be continued...
+A `FailureStrategy` implementation that will log the thrown errors using the `org.apache.logging.log4j.Logger`. The 
+used log level is `ERROR`.
 
 #### PrintStackTraceFailureStrategy
-To be continued...
+A `FailureStrategy` implementation that will print the thrown errors using the `Throwable#printStackTrace()` method.
 
 #### Slf4jFailureStrategy
-To be continued...
+A `FailureStrategy` implementation that will log the thrown errors using the `org.slf4j.Logger`. The used log level 
+is `ERROR`.
 
 #### SystemErrorFailureStrategy
-To be continued...
+A `FailureStrategy` implementation that will print the thrown errors using the `System.err` print stream 
+(like `Throwable#printStackTrace(System.err)`) after printing the class information of the listener which has thrown
+this error.
