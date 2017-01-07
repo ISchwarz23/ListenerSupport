@@ -70,7 +70,7 @@ As there can be errors thrown by listeners that are notified, there is the possi
 to register a `FailureStrategy` to the `ListenerSupport`. That `FailureStrategy` is
 called whenever a listener has thrown a `Throwable`.
 
-There are already multiple `FailureStrategie`s available to be used:
+There are already multiple `FailureStrategie`s available to be used:  
 | Name                           | Artifact                                                            |  
 | ------------------------------ | ------------------------------------------------------------------- |  
 | JavaLoggingFailureStrategy     | `de.codecrafters.listenersupport:failurestrategy-javalogger`        |  
